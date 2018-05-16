@@ -6,14 +6,27 @@ namespace BasisForDeveloper.NotificationPattern
 {
     public class Notification
     {
-        public List<String> Notifications { get; private set; }
+        private List<String> _Notifications = new List<String>();
+
+        public List<String> Notifications
+        {
+            get
+            {
+                ExecuteValidation();
+                return _Notifications;
+            }
+        }
+
+        public virtual void ExecuteValidation()
+        {
+        }
 
         /// <summary>
         /// Adds Object Notifications to a Current Instance
         /// </summary>
         public void AddNotifications(Notification ObjectNotification)
         {
-            Notifications.AddRange(ObjectNotification.Notifications);
+            _Notifications.AddRange(ObjectNotification.Notifications);
         }
 
         /// <summary>
@@ -21,18 +34,31 @@ namespace BasisForDeveloper.NotificationPattern
         /// </summary>
         public void AddNotifications(List<String> Messages)
         {
-            Notifications.AddRange(Messages);
+            _Notifications.AddRange(Messages);
         }
 
         /// <summary>
         /// Returns True if there is no notification
         /// </summary>
-        public Boolean ItsValid { get {return Notifications.Count == 0; } }
+        public Boolean ItsValid
+        {
+            get
+            {
+                return GetNumberOfNotifications == 0;
+            }
+        }
 
         /// <summary>
         /// Returns the number of notifications for the current object
         /// </summary>
-        public int GetNumberOfNotifications { get { return Notifications.Count; } }
+        public int GetNumberOfNotifications
+        {
+            get
+            {
+                ExecuteValidation();
+                return _Notifications.Count;
+            }
+        }
 
         /// <summary>
         /// Checks whether the object 'Object' is null, if so, it adds the message 'Message' to the list of notifications
@@ -40,7 +66,7 @@ namespace BasisForDeveloper.NotificationPattern
         public void ValidIsNull(Object Object, String Message = "")
         {
             if (Object == null)
-                Notifications.Add(Message);
+                _Notifications.Add(Message);
         }
 
         /// <summary>
@@ -49,7 +75,7 @@ namespace BasisForDeveloper.NotificationPattern
         public void ValidItsBetween(int value, int begin, int end, String Message = "")
         {
             if (value < begin || value > end)
-                Notifications.Add(Message);
+                _Notifications.Add(Message);
         }
 
         /// <summary>
@@ -58,7 +84,7 @@ namespace BasisForDeveloper.NotificationPattern
         public void ValidCPF(String CPF, String Message = "")
         {
             if (!IsCpf(CPF))
-                Notifications.Add(Message);
+                _Notifications.Add(Message);
         }
 
         /// <summary>
@@ -67,7 +93,7 @@ namespace BasisForDeveloper.NotificationPattern
         public void ValidCNPJ (String CNPJ, String Message = "")
         {
             if (!IsCnpj(CNPJ))
-                Notifications.Add(Message);
+                _Notifications.Add(Message);
         }
 
         /// <summary>
@@ -77,7 +103,7 @@ namespace BasisForDeveloper.NotificationPattern
         {
             Regex validEmail = new Regex(@"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$");
             if (!validEmail.IsMatch(email))
-                Notifications.Add(Message);
+                _Notifications.Add(Message);
         }
 
         //http://www.macoratti.net/11/09/c_val1.htm

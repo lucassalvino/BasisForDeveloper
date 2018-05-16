@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
+    <Authors>Lucas Salvino de Deus</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Library with the resources most used by me in the work routine. It has log manager, tasks, settings (json file), Notification Pattern and custom exceptions
+</Description>
+    <PackageProjectUrl>https://github.com/lucassalvino/BasisForDeveloper</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lucassalvino/BasisForDeveloper</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
