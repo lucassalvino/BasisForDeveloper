@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace BasisForDeveloper.NotificationPattern
 {
@@ -26,7 +26,10 @@ namespace BasisForDeveloper.NotificationPattern
         /// </summary>
         public void AddNotifications(Notification ObjectNotification)
         {
-            _Notifications.AddRange(ObjectNotification.Notifications);
+            if (ObjectNotification == null)
+                _Notifications.Add("Notification object was not instantiated");
+            else
+                _Notifications.AddRange(ObjectNotification.Notifications);
         }
 
         /// <summary>
@@ -119,9 +122,15 @@ namespace BasisForDeveloper.NotificationPattern
         /// </summary>
         public void ValidEmail(String email, String Message = "")
         {
-            Regex validEmail = new Regex(@"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$");
-            if (!validEmail.IsMatch(email))
+            try{
+                MailAddress endereco = new MailAddress(email.ToLower());
+                if (!endereco.Address.Equals(email.ToLower()))
+                    throw new Exception();
+            }
+            catch
+            {
                 _Notifications.Add(Message);
+            }
         }
 
         //http://www.macoratti.net/11/09/c_val1.htm
