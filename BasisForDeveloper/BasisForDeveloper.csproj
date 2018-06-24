@@ -10,6 +10,9 @@
     <PackageProjectUrl>https://github.com/lucassalvino/BasisForDeveloper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lucassalvino/BasisForDeveloper</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>1.0.1.2</AssemblyVersion>
+    <FileVersion>1.0.1.2</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -37,6 +37,12 @@ namespace BasisForDeveloper.NotificationPattern
             _Notifications.AddRange(Messages);
         }
 
+        public void AddNotifications(String Message)
+        {
+            if (!String.IsNullOrEmpty(Message))
+                _Notifications.Add(Message);
+        }
+
         /// <summary>
         /// Returns True if there is no notification
         /// </summary>
@@ -73,6 +79,18 @@ namespace BasisForDeveloper.NotificationPattern
         /// Checks whether the value 'value' is between 'begin' and 'end', if no, it adds the message 'Message' to the list of notifications
         /// </summary>
         public void ValidItsBetween(int value, int begin, int end, String Message = "")
+        {
+            if (value < begin || value > end)
+                _Notifications.Add(Message);
+        }
+
+        public void ValidItsBetween(float value, float begin, float end, String Message = "")
+        {
+            if (value < begin || value > end)
+                _Notifications.Add(Message);
+        }
+
+        public void ValidItsBetween(double value, double begin, double end, String Message = "")
         {
             if (value < begin || value > end)
                 _Notifications.Add(Message);
