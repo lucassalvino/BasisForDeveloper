@@ -5,6 +5,16 @@ using System.Linq;
 
 namespace UnitTestProject1
 {
+    public class EmailTest : Notification
+    {
+        public String Email { get; set; }
+        public String Nome { get; set; }
+        protected override void ExecuteValidation()
+        {
+            this.ValidEmail(Email, "");
+        }
+    }
+
     [TestClass]
     public class TestOfNotification
     {
@@ -14,7 +24,7 @@ namespace UnitTestProject1
             Notification Test = new Notification();
             Notification err = null;
             Test.AddNotifications(err);
-            Assert.AreEqual(1, Test.GetNumberOfNotifications);
+            Assert.AreEqual(0, Test.GetNumberOfNotifications);
         }
 
         [TestMethod]
@@ -36,6 +46,15 @@ namespace UnitTestProject1
             Test.ValidEmail("ADJAHSDJHALSJKDHALSKJDHA", ErroMessagem);
             Assert.AreEqual(1, Test.GetNumberOfNotifications);
             Assert.AreEqual(ErroMessagem, Test.Notifications.First());
+        }
+
+        [TestMethod]
+        public void ValidEmailInterno()
+        {
+            EmailTest teste = new EmailTest() { Email = "asdasdasdasd", Nome = "Lucas"};
+            teste.ExecuteValidationRoutine();
+            Assert.IsFalse(teste.ItsValid);
+            Assert.AreEqual(1, teste.Notifications.Count);
         }
 
         [TestMethod]

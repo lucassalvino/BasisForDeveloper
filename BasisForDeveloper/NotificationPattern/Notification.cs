@@ -12,12 +12,17 @@ namespace BasisForDeveloper.NotificationPattern
         {
             get
             {
-                ExecuteValidation();
                 return _Notifications;
             }
         }
 
-        public virtual void ExecuteValidation()
+        public void ExecuteValidationRoutine()
+        {
+            _Notifications.Clear();
+            ExecuteValidation();
+        }
+
+        protected virtual void ExecuteValidation()
         {
         }
 
@@ -26,9 +31,7 @@ namespace BasisForDeveloper.NotificationPattern
         /// </summary>
         public void AddNotifications(Notification ObjectNotification)
         {
-            if (ObjectNotification == null)
-                _Notifications.Add("Notification object was not instantiated");
-            else
+            if (ObjectNotification != null)
                 _Notifications.AddRange(ObjectNotification.Notifications);
         }
 
@@ -64,7 +67,6 @@ namespace BasisForDeveloper.NotificationPattern
         {
             get
             {
-                ExecuteValidation();
                 return _Notifications.Count;
             }
         }
