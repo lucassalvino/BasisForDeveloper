@@ -10,9 +10,9 @@
     <PackageProjectUrl>https://github.com/lucassalvino/BasisForDeveloper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lucassalvino/BasisForDeveloper</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <AssemblyVersion>1.0.1.5</AssemblyVersion>
-    <FileVersion>1.0.1.5</FileVersion>
-    <Version>1.0.5</Version>
+    <AssemblyVersion>1.0.1.6</AssemblyVersion>
+    <FileVersion>1.0.1.6</FileVersion>
+    <Version>1.0.6</Version>
     <PackageReleaseNotes>Mudanca para .net core 2.0</PackageReleaseNotes>
   </PropertyGroup>
 
