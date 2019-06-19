@@ -122,7 +122,7 @@ namespace BasisForDeveloper.NotificationPattern
         /// <summary>
         /// Checks whether the 'email' value matches a valid email, if no, it adds the message 'Message' to the list of notifications
         /// </summary>
-        public void ValidEmail(String email, String Message = "")
+        public void ValidEmail(string email, String Message = "")
         {
             try{
                 MailAddress endereco = new MailAddress(email.ToLower());
